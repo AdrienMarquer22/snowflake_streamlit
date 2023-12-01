@@ -1,5 +1,7 @@
 import streamlit
 import pandas
+import requests
+
 
 streamlit.title("My Parents New Healthy diner")
 
@@ -16,3 +18,6 @@ select = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['
 
 fruitsshow = my_fruit_list.loc[select]
 streamlit.dataframe(fruitsshow)
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
